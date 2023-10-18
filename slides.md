@@ -166,7 +166,44 @@ image: ./images/array-copy.png
 
 # Change Array by Copy
 
-**TODO**
+- Copying an array and modifying the copy without affecting the original.
+- Avoids mutating the original array.
+- Useful for state management in React.
+
+<br>
+
+> Achieved via adding new functions to `Array.prototype.`
+
+---
+
+## New functions in `Array.prototype`
+
+- toReversed() -> Array
+- toSorted(compareFn) -> Array
+- toSpliced(start, deleteCount, ...items) -> Array
+- with(index, value) -> Array
+
+## Difference in usage
+
+```javascript
+const arr = [1, 2, 3, 4, 5];
+arr.sort();  // Mutates the original array
+
+const newArr = arr.toSort(); // Returns a sorted copy
+```
+
+---
+
+# Example for `Array.with`
+
+```javascript
+const arr = [1, 2, 3, 4, 5];
+const newArr = arr.with(2, 10);
+
+console.log(arr);  // Outputs: [1, 2, 3, 4, 5]
+
+console.log(newArr);  // Outputs: [1, 2, 10, 4, 5]
+```
 
 ---
 layout: image-right
@@ -212,7 +249,124 @@ image: ./images/classes.png
 
 # Usage of class & its recent improvements
 
-**TODO**
+- Classes are syntactic sugar over JavaScript's prototype-based inheritance.
+- Classes are special functions.
+- Class declarations are not hoisted.
+
+---
+
+# Class declarations
+
+```javascript
+class Rectangle extends Shape {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+
+  calcArea() {
+    return this.height * this.width;
+  }
+
+  get area() {
+    return this.calcArea();
+  }
+}
+
+const square = new Rectangle(10, 10);
+
+console.log(square.area); // Outputs: 100
+```
+
+---
+
+# Class use-cases
+
+#### Classes are good for:
+
+- Reusable components
+- Encapsulation of related variables and functions
+- Inheritance (especially for built-in objects)
+- Method overriding
+- Static methods
+
+<br>
+
+#### Additionally for react:
+
+- State management
+- Lifecycle methods
+- Event handling
+
+---
+
+# Decorators
+
+- Functions that can be used to modify class declarations and methods.
+
+```javascript
+function logged(value, { kind, name }) {
+  if (kind === "method" || kind === "getter" || kind === "setter") {
+    return function (...args) {
+      console.log(`starting ${name} with arguments ${args.join(", ")}`);
+      const ret = value.call(this, ...args);
+      console.log(`ending ${name}`);
+      return ret;
+    };
+  }
+}
+
+class C {
+  @logged
+  set x(arg) {}
+}
+
+new C().x = 1
+// starting x with arguments 1
+// ending x
+```
+
+---
+
+# Private fields and methods
+
+- Fields and methods that are only accessible within the class.
+
+```javascript
+class Rectangle {
+  #height;
+  #width;
+
+  constructor(height, width) {
+    this.#height = height;
+    this.#width = width;
+  }
+
+  #calcArea() {
+    return this.#height * this.#width;
+  }
+
+  get area() {
+    return this.#calcArea();
+  }
+}
+```
+
+---
+
+# Static methods
+
+- Methods that are called directly on the class, not on an instance of the class.
+
+```javascript
+class Rectangle {
+  static fromSquare(square) {
+    return new Rectangle(square, square);
+  }
+}
+
+const square = new Rectangle(10, 10);
+```
 
 ---
 layout: image-right
