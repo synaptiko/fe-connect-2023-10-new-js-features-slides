@@ -189,7 +189,7 @@ image: ./images/array-copy.png
 const arr = [1, 2, 3, 4, 5];
 arr.sort();  // Mutates the original array
 
-const newArr = arr.toSort(); // Returns a sorted copy
+const newArr = arr.toSorted(); // Returns a sorted copy
 ```
 
 ---
