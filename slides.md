@@ -9,7 +9,7 @@ title: New JS features
 mdc: true
 ---
 
-# New JS features
+# New JS <sup style="color:rgba(0,0,0,.33)">(ECMAScript)</sup> features
 
 by Ozgur & Jiri
 <br>
