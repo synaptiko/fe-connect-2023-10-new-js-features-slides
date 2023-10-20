@@ -7,6 +7,7 @@ lineNumbers: false
 transition: slide-left
 title: New JS features
 mdc: true
+hideInToc: true
 ---
 
 # New JS <sup style="color:rgba(0,0,0,.33)">(ECMAScript)</sup> features
@@ -37,15 +38,12 @@ dim: false
 ---
 layout: image-right
 image: ./images/overview.png
+hideInToc: true
 ---
 
 # Overview
 
-- WeakMap and Symbols
-- Change Array by Copy
-- Top-level await
-- Usage of class & its recent improvements
-- String.prototype.replaceAll
+<Toc columns=1 maxDepth=1 />
 
 ---
 layout: image-right
@@ -65,6 +63,8 @@ image: ./images/weak-map.png
 - Associating metadata with DOM nodes.
 - Caching computed results tied to objects.
 
+---
+hideInToc: true
 ---
 
 # Syntax of WeakMap
@@ -95,6 +95,8 @@ div.addEventListener('click', () => {
 ```
 
 ---
+hideInToc: true
+---
 
 # Example 2 of WeakMap
 
@@ -114,6 +116,8 @@ function compute(obj) {
 }
 ```
 
+---
+hideInToc: true
 ---
 
 # Benefits of WeakMap
@@ -156,7 +160,8 @@ const weakMap = new WeakMap();
 const symbol = Symbol('my symbol');
 
 weakMap.set(symbol, 'my value');
-console.log(weakMap.get(symbol));  // Outputs: 'my value'
+console.log(weakMap.get(symbol));
+  // Outputs: 'my value'
 ```
 
 ---
@@ -164,7 +169,7 @@ layout: image-right
 image: ./images/array-copy.png
 ---
 
-# Change Array by Copy
+# Change array by copy
 
 - Copying an array and modifying the copy without affecting the original.
 - Avoids mutating the original array.
@@ -193,6 +198,8 @@ const newArr = arr.toSorted(); // Returns a sorted copy
 ```
 
 ---
+hideInToc: true
+---
 
 # Example for `Array.with`
 
@@ -219,8 +226,10 @@ image: ./images/top-level-await.png
 - Available in Node.js 14+
 
 ---
+hideInToc: true
+---
 
-# Example 1 of Top-level await
+# Example 1 of top-level await
 
 ```javascript
 import { fetchData } from 'data-module';
@@ -228,7 +237,7 @@ import { fetchData } from 'data-module';
 console.log(await fetchData());
 ```
 
-# Example 2 of Top-level await
+# Example 2 of top-level await
 
 ```javascript
 const dbConnection = await connectToDatabase();
@@ -236,8 +245,10 @@ const server = await startServer();
 ```
 
 ---
+hideInToc: true
+---
 
-# Benefits of Top-level await
+# Benefits of top-level await
 
 - Better management of asynchronous operations in module initialization.
 - Cleaner, more readable code with easier async handling.
@@ -253,6 +264,8 @@ image: ./images/classes.png
 - Classes are special functions.
 - Class declarations are not hoisted.
 
+---
+hideInToc: true
 ---
 
 # Class declarations
@@ -279,6 +292,8 @@ console.log(square.area); // Outputs: 100
 ```
 
 ---
+hideInToc: true
+---
 
 # Class use-cases
 
@@ -292,12 +307,14 @@ console.log(square.area); // Outputs: 100
 
 <br>
 
-#### Additionally for react:
+#### Additionally for React:
 
 - State management
 - Lifecycle methods
 - Event handling
 
+---
+hideInToc: true
 ---
 
 # Decorators
@@ -327,6 +344,8 @@ new C().x = 1
 ```
 
 ---
+hideInToc: true
+---
 
 # Private fields and methods
 
@@ -353,6 +372,8 @@ class Rectangle {
 ```
 
 ---
+hideInToc: true
+---
 
 # Static methods
 
@@ -373,8 +394,7 @@ layout: image-right
 image: ./images/replace-all.png
 ---
 
-# String.prototype
-# &nbsp;&nbsp;&nbsp;.replaceAll
+# String.prototype&#8203;.replaceAll
 
 - Replaces all occurrences of a substring or pattern with another substring.
 - Simplifies global replacement operations.
